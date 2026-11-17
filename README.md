@@ -1,5 +1,9 @@
 # dsh-net-accelerator
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/bin-71/dsh-net-accelerator)](https://github.com/bin-71/dsh-net-accelerator/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows-0078D6)](https://github.com/bin-71/dsh-net-accelerator)
+
 给 [DeepSeek Harness](https://github.com/deepseek-ai)（DSH）用的 Host 插件：在访问 GitHub 等外网站点前，自动检查并开启 **Watt Toolkit（Steam++）** 的系统加速。
 
 装上之后，你的 agent 会多一个 `net_accelerate` 工具，下载前先调一次：加速没开就自己拉起 Watt Toolkit 并等待生效；拉不起来就如实告诉你「需要点一下开关」。
@@ -39,21 +43,27 @@
 - DSH Desktop 0.2.x
 - 已安装 [Watt Toolkit](https://steampp.net/)
 
-**方式一：通过界面**
+**方式一：下载发布包（推荐，不需要 git）**
 
-1. 把本仓库下载或克隆到本地，例如 `E:\plugins\dsh-net-accelerator`
+1. 打开 [Releases](https://github.com/bin-71/dsh-net-accelerator/releases) 页面，下载最新的 `dsh-net-accelerator-v*.zip`
+2. 解压，得到一个 `dsh-net-accelerator` 文件夹，放到一个**稳定的位置**（不要放临时目录或桌面回收站附近）
+3. 打开 DSH → **Plugins**（插件）→ **Add plugin** → 选择该文件夹
+4. 插件列表出现「Watt Toolkit 加速开关」即安装成功
+
+**方式二：从源码目录安装**
+
+1. `git clone https://github.com/bin-71/dsh-net-accelerator.git`，例如克隆到 `E:\plugins\dsh-net-accelerator`
 2. 打开 DSH → **Plugins**（插件）→ **Add plugin** → 选择该目录
-3. 插件列表出现「Watt Toolkit 加速开关」即安装成功
 
-**方式二：通过 agent**
+**方式三：通过 agent**
 
 让 agent 调用 `plugin_manager`：
 
 ```
-install_bundle  target=<仓库所在绝对路径>
+install_bundle  target=<插件目录绝对路径>
 ```
 
-> 安装是**目录链接**方式，之后不要删除或移动该目录，否则插件会失效。
+> 安装是**目录链接**方式，之后不要删除或移动该目录，否则插件会失效。升级时用新版本解压覆盖同一目录，然后在 Plugins 里禁用再启用即可。
 
 ## 配置
 
@@ -137,6 +147,10 @@ dsh-net-accelerator/
 A DSH (DeepSeek Harness) Host plugin that exposes one tool, `net_accelerate`. Before downloads from GitHub it verifies four independent signals — the `# Steam++ Start` hosts block, the `Steam++.Accelerator.exe` process, the local reverse proxy port, and a real HTTPS probe — and confirms the peer certificate was issued by Watt Toolkit. `action: "ensure"` launches Watt Toolkit when acceleration is off and polls until it takes effect; when it cannot, it returns `needsUserAction` instead of claiming success.
 
 Windows only. Requires DSH Desktop 0.2.x and [Watt Toolkit](https://steampp.net/).
+
+## 更新日志
+
+版本变更见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## License
 
