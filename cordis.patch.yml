@@ -1,0 +1,4 @@
+- insert:
+    - id: net-accelerator
+      name: '@local/net-accelerator'
+      config: {}

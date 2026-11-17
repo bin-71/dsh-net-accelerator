@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Watt Toolkit accelerator",
+    "description": "Checks whether the Watt Toolkit (Steam++) accelerator is running and turns it on before downloads from GitHub or other blocked hosts. Exposes the net_accelerate tool with status and ensure actions.",
+    "detail": "docs/DETAIL.md"
+  }
+}

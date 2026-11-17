@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Watt Toolkit 加速开关",
+    "description": "检查并开启 Watt Toolkit（Steam++）网络加速，用于在下载 GitHub 等外网资源前打通网络。提供 net_accelerate 工具，支持 status 与 ensure 两种动作。",
+    "detail": "docs/DETAIL.md"
+  }
+}
